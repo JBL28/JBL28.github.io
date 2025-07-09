@@ -34,4 +34,10 @@ window.addEventListener('wheel', (event) => {
 
 const phoneCopy = () =>{
     navigator.clipboard.writeText("01089426538")
+    .then(() => {
+            alert("전화번호가 복사되었습니다!");
+        })
+        .catch((err) => {
+            console.error("클립보드 복사 실패:", err);
+        });
 }

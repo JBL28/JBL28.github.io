@@ -44,23 +44,6 @@ const phoneCopy = async () => {
 
 let currentCard = 0;
 
-const cardControl = () => {
-    const cards = document.getElementsByClassName("project_container");
-    const left_button = document.getElementsByClassName("left_button")[0];
-    const right_button = document.getElementsByClassName("right_button")[0];
-
-    if (left_button.disabled === true)
-        left_button.disabled = false;
-    else if (right_button.disabled === true)
-        right_button.disabled = false;
-
-    if (currentCard == 0) {
-        left_button.disabled = true;
-    } else if (currentCard == cards.length - 1) {
-        right_button.disabled = true;
-    }
-}
-
 const scrollToIndex = (index) => {
     const cards = document.getElementsByClassName("project_container");
     const box = document.getElementsByClassName("project_box")[0];
@@ -78,17 +61,23 @@ const scrollToIndex = (index) => {
 }
 
 const scrollCard = (index) => {
+    const cards = document.getElementsByClassName("project_container");
     if (isScrolling === true) return;
 
     if (index === "next"){
-        currentCard++;
+        if(currentCard == cards.length - 1)
+            currentCard = 0;
+        else
+            currentCard++;
     } else if (index === "prev") {
-        currentCard--;
+        if(currentCard == 0)
+            currentCard = cards.length - 1;
+        else
+            currentCard--;
     } else {
         console.error("잘못된 접근입니다.");
     }
-
-    cardControl();
+    console.log(currentCard);
 
     scrollToIndex(currentCard);
 }

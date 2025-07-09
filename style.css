@@ -26,7 +26,7 @@ body, html {
     width: 100vw;
     overflow-y: auto;
 
-    background-image: linear-gradient(0deg, rgb(185, 185, 185), white);
+    background-image: linear-gradient(0deg, rgb(233, 233, 233), white);
 }
 
 /*스크롤될 페이지*/
@@ -214,6 +214,107 @@ body, html {
     background-size: cover;
 }
 
-@media (max-width:850px) {
-    .contact_box{height: 75vh;}
+.project_bigBox {
+    margin-top: 2px;
+    height: 67vh;
+    width: 90vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.project_box {
+    margin-top: 0px;
+    height: 67vh;
+    width: 65vw;
+
+    display: flex;
+
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    overflow-x: scroll;
+
+    @media (max-width:850px) {
+        height: 75vh;
+    }
+}
+
+.project_container {
+    flex: 0 0 auto;
+    margin: 0px 7.5vw 0px 7.5vw;
+
+    margin-top: 2px;
+    height: 60vh;
+    width: 50vw;
+    background-color: rgba(224, 224, 224, 0.25);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: solid 2px;
+    border-color: rgba(224, 224, 224, 0.6);
+    border-radius: 5vh;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    @media (max-width:850px) {
+        height: 40vh;
+    }
+}
+
+ /*아이콘들의 크기와 외형 커스텀*/
+.left_button, .right_button {
+    width: 7vw; 
+    height: 7vw;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+}
+
+ /*아이콘들의 크기와 외형 커스텀*/
+.left_button:hover {
+    transform: scale(-1.1);
+    opacity: 0.5;
+}
+
+.right_button:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+
+.left_button {
+    background-image: url("./images/arrow.png");
+    transform: scaleX(-1);
+    background-size: cover;
+}
+
+.right_button {
+    background-image: url("./images/arrow.png");
+    background-size: cover;
+}
+
+.project_text{
+    margin: 2vw;
+    max-width: 40vw;
+    text-align: start;
+}
+
+.project_image {
+    width: 18vw;
+    height: 18vw;
+    margin: 1vw;
+    @media (max-width:850px) {
+        display: none;
+    }
+}
+
+.project_title {
+    font-size: 25px;;
+    margin: 0 0 5vh 0;
 }

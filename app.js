@@ -42,6 +42,53 @@ const phoneCopy = async () => {
     }
 }
 
+let currentCard = 0;
+
+const cardControl = () => {
+    const cards = document.getElementsByClassName("project_container");
+    const left_button = document.getElementsByClassName("left_button")[0];
+    const right_button = document.getElementsByClassName("right_button")[0];
+
+    if (left_button.disabled === true)
+        left_button.disabled = false;
+    else if (right_button.disabled === true)
+        right_button.disabled = false;
+
+    if (currentCard == 0) {
+        left_button.disabled = true;
+    } else if (currentCard == cards.length - 1) {
+        right_button.disabled = true;
+    }
+}
+
+const scrollToIndex = (index) => {
+    const cards = document.getElementsByClassName("project_container");
+    const box = document.getElementsByClassName("project_box")[0];
+    
+    currentPage = index;
+
+    isScrolling = true;
+    margin = parseFloat(getComputedStyle(cards[index]).marginLeft)
+    box.scrollTo({
+        top: 0, 
+        left: cards[index].offsetLeft - 3.3*margin,
+        behavior: 'smooth'
+    });
+    setTimeout(() => isScrolling = false, 100); // 스크롤 애니메이션동안 스크롤을 비활성화
+}
+
 const scrollCard = (index) => {
-    console.log(index);
+    if (isScrolling === true) return;
+
+    if (index === "next"){
+        currentCard++;
+    } else if (index === "prev") {
+        currentCard--;
+    } else {
+        console.error("잘못된 접근입니다.");
+    }
+
+    cardControl();
+
+    scrollToIndex(currentCard);
 }

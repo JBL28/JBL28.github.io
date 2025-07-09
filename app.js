@@ -33,5 +33,5 @@ window.addEventListener('wheel', (event) => {
 }, {passive: false})
 
 const phoneCopy = () =>{
-    
+    navigator.clipboard.writeText("01089426538")
 }

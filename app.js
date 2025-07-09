@@ -65,7 +65,7 @@ const scrollToIndex = (index) => {
     const cards = document.getElementsByClassName("project_container");
     const box = document.getElementsByClassName("project_box")[0];
     
-    currentPage = index;
+    currentCard = index;
 
     isScrolling = true;
     margin = parseFloat(getComputedStyle(cards[index]).marginLeft)

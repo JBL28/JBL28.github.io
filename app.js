@@ -8,6 +8,7 @@ let isScrolling = false;
 
 // 현재 위치한 인덱스로 스크롤
 const scrollToPage = (index) => {
+    currentPage = index;
     isScrolling = true;
     page_container.scrollTo({
         top: pages[index].offsetTop - header.offsetHeight, 
@@ -32,12 +33,15 @@ window.addEventListener('wheel', (event) => {
     }
 }, {passive: false})
 
-const phoneCopy = () =>{
-    navigator.clipboard.writeText("01089426538")
-    .then(() => {
-            alert("전화번호가 복사되었습니다!");
-        })
-        .catch((err) => {
-            console.error("클립보드 복사 실패:", err);
-        });
+const phoneCopy = async () => {
+    try {
+        await navigator.clipboard.writeText("010-1234-5678");
+        alert("복사 완료!");
+    } catch (err) {
+        alert("복사 실패: " + err.message);
+    }
+}
+
+const scrollCard = (index) => {
+    console.log(index);
 }
